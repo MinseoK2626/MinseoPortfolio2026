@@ -1,75 +1,23 @@
-# React + TypeScript + Vite
+# Minseo Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+From this directory, run `npm ci`, `npm run lint`, and `npm run build`.
+The build requires Node.js 24, Git, and tar. Run `npm run dev` for a local
+preview at the `/MinseoPortfolio2026/` base path. Rebuild or restart the
+preview after editing the chapter.
 
-Currently, two official plugins are available:
+The lavender version is preserved from GitHub Pages commit `239874f`.
+That commit contains the bundled site and its assets. The React source in
+`src/` is from the earlier portfolio and remains type checked. The Pages
+build uses the pinned lavender artifact and extends its existing Activities
+card list and chapter dialog. If the pinned commit is missing locally, the
+build fetches the Pages branch to retrieve it. It checks each integration
+point before emitting the site into `dist/`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Edit the Research Assistant content in `research/chapter.html` and its
+styles in `research/chapter.css`. Each literature area has its own article
+and can be edited or removed independently. Add future assignments as
+articles in Current Research Focus, with any assignment-specific dates and
+mentors recorded there. The position timeline describes the overall role.
 
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Run `npm run deploy` after a successful build to publish `dist/` to GitHub
+Pages when authorized.

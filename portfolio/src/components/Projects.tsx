@@ -74,7 +74,7 @@ export default Projects
 
 
 
-function ProjectSection({title, slides}:{title:string, slides:any[]}){
+function ProjectSection({title, slides}:{title:string, slides:{image:string, text:string}[]}){
 
   const [index,setIndex] = useState(0)
 

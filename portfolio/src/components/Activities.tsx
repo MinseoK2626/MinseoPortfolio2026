@@ -107,7 +107,7 @@ export default Activities
 
 
 
-function ActivitySection({title, slides}:{title:string, slides:any[]}){
+function ActivitySection({title, slides}:{title:string, slides:{title:string, image:string, text:string}[]}){
 
   const [index,setIndex] = useState(0)
 
@@ -180,7 +180,7 @@ function ActivitySection({title, slides}:{title:string, slides:any[]}){
       </p>
 
       <div style={{display:"flex",gap:"8px"}}>
-        {slides.map((_:any,i:number)=>(
+        {slides.map((_,i)=>(
           <div
             key={i}
             style={{
