@@ -1,6 +1,6 @@
 import { execFileSync, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'
+import { copyFileSync, mkdtempSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { researchIcon } from '../research/icons.mjs'
@@ -44,6 +44,29 @@ try {
   const originalStyle = 'assets/index-Bye9K5ZT.css'
   let script = readFileSync(join(stage, originalScript), 'utf8')
   let index = readFileSync(join(stage, 'index.html'), 'utf8')
+
+  // Extend the existing Computing & Research list in the pinned Pages bundle.
+  const clusterPreview = 'assets/cluster-certainty.webp'
+  const clusterProject = {
+    id: 'cluster-certainty',
+    name: 'Cluster / Certainty',
+    tag: 'INDEPENDENT RESEARCH / CLUSTERING ROBUSTNESS',
+    category: 'Computing & Research',
+    image: `/MinseoPortfolio2026/${clusterPreview}`,
+    summary: 'An independent study of how missing sales data and imputation change the way stores are grouped.',
+    liveUrl: 'https://minseok2626.github.io/Missing-Data-Clustering-Robustness/',
+    github: 'https://github.com/MinseoK2626/Missing-Data-Clustering-Robustness',
+    text: 'Using synthetic convenience-store data, this study tests how missing sales records affect K-means segmentation. It compares results with a complete-data benchmark to see when clearer-looking clusters still assign stores differently.',
+    skills: ['Python', 'K-means', 'Missing-data simulation'],
+    highlights: [
+      'Compare four imputation methods across three missing-data mechanisms.',
+      'Explore 4,800 model fits across 80 synthetic cohorts in the interactive research site.',
+      'Inspect when silhouette scores improve even as agreement with the complete-data benchmark declines.',
+    ],
+  }
+  copyFileSync(join(directory, 'public', 'cluster-certainty.webp'), join(stage, clusterPreview))
+  script = replaceOnce(script, 'code:Ue.dfa}}],...Ge', `code:Ue.dfa}},${JSON.stringify(clusterProject)}],...Ge`)
+
   const chapter = read('research/chapter.html').replace(
     /<span data-research-icon="([a-z]+)"><\/span>/g,
     (_, name) => researchIcon(name),
